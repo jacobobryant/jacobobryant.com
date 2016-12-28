@@ -1,0 +1,8 @@
+languageCode = "en-us"
+title = "Jacob O'Bryant"
+baseurl = "http://music.jacobobryant.com/site/"
+newContentEditor = "vim"
+theme = "nofancy"
+
+[taxonomies]
+subsection = "subsections"
