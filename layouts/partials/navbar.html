@@ -8,7 +8,7 @@
                 {{ range $section,$pages := .Site.Sections }}
                 {{ if ne $section "post" }}
                 <li class="pure-menu-item">
-                    <a href="{{ $baseurl }}{{ $section | urlize }}" class="pure-menu-link">{{ $section | title }}</a>
+                    <a href="{{ $baseurl }}{{ $section | urlize }}" class="pure-menu-link">{{ index $.Site.Data.titles $section }}</a>
                 </li>
                 {{ end }}
                 {{ end }}
@@ -22,7 +22,7 @@
                 {{ range $section,$pages := .Site.Sections }}
                 {{ if ne $section "post" }}
                 <li class="pure-menu-item">
-                    <a href="{{ $baseurl }}{{ $section | urlize }}" class="pure-menu-link">{{ $section | title }}</a>
+                    <a href="{{ $baseurl }}{{ $section | urlize }}" class="pure-menu-link">{{ index $.Site.Data.titles $section }}</a>
                 </li>
                 {{ end }}
                 {{ end }}

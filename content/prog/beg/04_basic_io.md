@@ -1,5 +1,6 @@
 +++
 title = "basic io"
+date = "2016-12-28T03:15:42-07:03"
 subsections = [ "beginner" ]
 subsections_weight = 3
 +++

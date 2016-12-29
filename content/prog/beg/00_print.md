@@ -1,5 +1,6 @@
 +++
 title = "print"
+date = "2016-12-28T03:15:42-07:00"
 subsections = [ "beginner" ]
 subsections_weight = 0
 +++

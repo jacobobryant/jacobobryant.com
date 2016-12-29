@@ -5,9 +5,36 @@
     <div class="pure-u-1-24 pure-u-md-5-24"></div>
 	<div class="pure-u-11-12 pure-u-md-5-8">
         <h1>{{ .Title }}</h1>
+        <div id="sidebar">
+          <h5>Beginner</h5>
+          {{ $title := .Title }}
+          {{ range .Site.Taxonomies.subsections.beginner }}
+            {{ if eq .Page.Title $title }}
+              <a class="current" href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a><br />
+            {{ else }}
+              <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a><br />
+            {{ end }}
+          {{ end }}
+        </div>
         {{ .Content }}
+
+        <hr />
+        <div>
+        {{ with .PrevInSection }}
+        {{ if isset .Params "subsections" }}
+          <span class="prev">Previous: <a href="{{ .RelPermalink }}">{{ .Title }}</a></span>
+        {{ end }}
+        {{ end }}
+        {{ with .NextInSection }}
+        {{ if isset .Params "subsections" }}
+          <span class="next">Next: <a href="{{ .RelPermalink }}">{{ .Title }}</a></span>
+        {{ end }}
+        {{ end }}
+        </div>
+
+
 	</div>
+
     <div class="pure-u-1-24 pure-u-md-1-6"></div>
 </div>
-
 {{ partial "footer.html" . }}
