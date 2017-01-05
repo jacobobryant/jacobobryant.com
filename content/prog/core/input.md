@@ -1,7 +1,7 @@
 +++
 title = "input"
 date = "2016-12-28T03:15:42-07:02"
-subsections = [ "beginner" ]
+subsections = [ "core" ]
 subsections_weight = 2
 +++
 `input` is the opposite of `print`. We use it to get typed input from the user:

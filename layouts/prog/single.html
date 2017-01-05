@@ -1,40 +1,63 @@
 {{ partial "header.html" . }}
 {{ partial "navbar.html" . }}
 
-<div class="pure-g">
-    <div class="pure-u-1-24 pure-u-md-5-24"></div>
-	<div class="pure-u-11-12 pure-u-md-5-8">
-        <h1>{{ .Title }}</h1>
-        <div id="sidebar">
-          <h5>Beginner</h5>
-          {{ $title := .Title }}
-          {{ range .Site.Taxonomies.subsections.beginner }}
-            {{ if eq .Page.Title $title }}
-              <a class="current" href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a><br />
-            {{ else }}
-              <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a><br />
-            {{ end }}
-          {{ end }}
-        </div>
-        {{ .Content }}
+{{ $title := .Title }}
+{{ $sections := (slice "introduction" "core" "intermediate" "programs") }}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-3 col-md-2 sidebar">
+			<ul class="nav nav-sidebar">
 
-        <hr />
-        <div>
-        {{ with .PrevInSection }}
-        {{ if isset .Params "subsections" }}
-          <span class="prev">Previous: <a href="{{ .RelPermalink }}">{{ .Title }}</a></span>
-        {{ end }}
-        {{ end }}
-        {{ with .NextInSection }}
-        {{ if isset .Params "subsections" }}
-          <span class="next">Next: <a href="{{ .RelPermalink }}">{{ .Title }}</a></span>
-        {{ end }}
-        {{ end }}
-        </div>
+				{{ range $sec := $sections }}
+					<h4>{{ $sec }}</h4>
+					<hr />
+					{{ range (index $.Site.Taxonomies.subsections $sec) }}
+							<li {{ if eq .Page.Title $title }}class="active"{{ end }}>
+							<a href="{{ .Page.RelPermalink }}">
+							{{ if isset .Page.Params "shorttitle" }}
+								{{ .Page.Params.shorttitle }}
+							{{ else }}
+								{{ .Page.Title }}
+							{{ end }}
+							</a></li>
+					{{ end }}
+				{{ end }}
 
+			</ul>
+		</div>
+
+		<div class="content col-sm-9 col-md-10">
+			<h2>{{ .Title }}</h2>
+			{{ .Content }}
+			<hr />
+
+			{{ $curTitle := .Title }}
+			{{ $.Scratch.Set "lastLink" "" }}
+			{{ $.Scratch.Set "lastTitle" "" }}
+
+			{{ range $sec := $sections }}
+			{{ range (index $.Site.Taxonomies.subsections $sec) }}
+
+				{{ if eq ($.Scratch.Get "lastTitle") $curTitle }}
+					<p>next: <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a></p>
+				{{ end }}
+
+				{{ if eq .Page.Title $curTitle }}
+					{{ $.Scratch.Set "prevLink" ($.Scratch.Get "lastLink") }}
+					{{ $.Scratch.Set "prevTitle" ($.Scratch.Get "lastTitle") }}
+				{{ end }}
+
+				{{ $.Scratch.Set "lastLink" .Page.RelPermalink }}
+				{{ $.Scratch.Set "lastTitle" .Page.Title }}
+			{{ end }}
+			{{ end }}
+
+			{{ with $.Scratch.Get "prevLink" }}
+			<p>previous: <a href="{{ . }}">{{ $.Scratch.Get "prevTitle" }}</a></p>
+			{{ end }}
+
+		</div>
 
 	</div>
-
-    <div class="pure-u-1-24 pure-u-md-1-6"></div>
 </div>
 {{ partial "footer.html" . }}

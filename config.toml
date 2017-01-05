@@ -1,8 +1,9 @@
 languageCode = "en-us"
 title = "Jacob O'Bryant"
-baseurl = "http://music.jacobobryant.com/site/"
+baseurl = "http://jacobobryant.com/"
 newContentEditor = "vim"
-theme = "nofancy"
+pygmentsCodeFences = true
+canonifyURLs = true
 
 [taxonomies]
 subsection = "subsections"

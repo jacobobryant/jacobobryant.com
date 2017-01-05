@@ -1,0 +1,12 @@
+{{ partial "header.html" . }}
+{{ partial "navbar.html" . }}
+
+<div class="container">
+{{ range $name, $page := .Site.Pages }}
+	{{ if eq .Type "post" }}
+	<p><a href="{{ .Permalink }}">{{ $page.Title }}</a></p>
+	{{ end }}
+{{ end }}
+</div>
+
+{{ partial "footer.html" . }}

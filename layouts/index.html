@@ -1,44 +1,25 @@
-{{ partial "header.html" . }}
+<html>
+  <head>
+  <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+	<link rel="stylesheet" href="{{ .Site.BaseURL }}bootstrap/css/bootstrap.min.css">
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+  <link rel="stylesheet" href="{{ .Site.BaseURL }}css/custom.css">
+
+    <title>{{ .Site.BaseURL }}</title>
+    <link rel="canonical" href="{{ .Site.BaseURL }}"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="refresh" content="0; url={{ .Site.BaseURL }}post/"/>
+  </head>
+<body>
 {{ partial "navbar.html" . }}
-
-<div class="pure-g">
-    <div class="pure-u-1-24 pure-u-md-5-24"></div>
-	<div class="pure-u-11-12 pure-u-md-5-8">
-	  <p class="posts-name">Recent posts:</p>
-
-	  <ul class="posts">
-		{{ $baseurl := .Site.BaseURL }}
-		{{ range $name, $page := .Site.Pages }}
-		{{ if eq .Type "post" }}
-		<li>
-		  <a href="{{ .Permalink }}">{{ $page.Title }}</a>
-
-		  <p class="footnote">
-			submitted <time datetime="{{ $page.Date.Format "2006-01-02T15:04:05Z07:00" }}" class="post-list timeago">{{ $page.Date.Format "2006-01-02T15:04:05Z07:00" }}</time>
-
-			{{ if or $page.Params.tags $page.Params.categories $page.Params.series }}
-			to
-			{{ end }}
-
-			{{ with $page.Params.tags }}
-			tags:[ {{ range $page.Params.tags}}<a href="{{ $baseurl }}tags/{{ . | urlize }}">{{ . }}</a> {{ end }}]
-			{{ end }}
-
-			{{ with $page.Params.categories }}
-			categories:[ {{ range $page.Params.categories }}<a href="{{ $baseurl }}categories/{{ . | urlize }}">{{ . }}</a> {{ end }}]
-			{{ end }}
-
-			{{ with $page.Params.series }}
-			series:[ {{ range $page.Params.series }}<a href="{{ $baseurl }}series/{{ . | urlize }}">{{ . }}</a> {{ end }}]
-			{{ end }}
-
-		  </p>
-		</li>
-		{{ end }}
-		{{ end }}
-	  </ul>
-	</div>
-    <div class="pure-u-1-24 pure-u-md-1-6"></div>
-</div>
-
-{{ partial "footer.html" . }}
+</body>
+</html>

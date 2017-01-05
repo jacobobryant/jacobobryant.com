@@ -1,7 +1,7 @@
 +++
 title = "variables"
 date = "2016-12-28T03:15:42-07:01"
-subsections = [ "beginner" ]
+subsections = [ "core" ]
 subsections_weight = 1
 +++
 To store data for later use, we use variables:

@@ -1,46 +1,22 @@
 <html lang="en">
 <head>
-
-  <link rel="stylesheet"
-  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-  <!-- Basic Page Needs –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+	<link rel="stylesheet" href="{{ .Site.BaseURL }}bootstrap/css/bootstrap.min.css">
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+  <link rel="stylesheet" href="{{ .Site.BaseURL }}css/custom.css">
+	<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
   <title>{{ .Title }}</title>
   <meta name="description" content="{{ .Title }}">
   <meta name="author" content="{{ .Site.Author.name }}">
-
-  <!-- Mobile Specific Metas –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- FONT –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="{{ .Site.BaseURL }}css/fonts.css">
-  
-  <!-- CSS –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
-  <!--[if lte IE 8]>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
-<![endif]-->
-<!--[if gt IE 8]><!-->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
-<!--<![endif]-->
-  <link rel="stylesheet" href="{{ .Site.BaseURL }}css/custom.css">
-
-  <!--- highlight js -->
-  {{ if .Site.Params.highlight }}
-  <link rel="stylesheet" href="{{ .Site.BaseURL }}highlight/styles/{{ .Site.Params.highlight }}.css">
-  {{ else }}
-  <link rel="stylesheet" href="{{ .Site.BaseURL }}highlight/styles/default.css">
-  {{ end }}
-  <script src="{{ .Site.BaseURL }}highlight/highlight.pack.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
-
-
-  <link rel="stylesheet" href="{{ .Site.BaseURL }}css/mycoolstyle.css">
 </head>
-<body>
+<body id="bootstrip-overrides">

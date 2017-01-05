@@ -1,0 +1,149 @@
+/****************************************
+ * MISC                                 *
+ ****************************************/
+hr {
+    border-color: black;
+}
+
+body {
+  margin-bottom: 20px;
+}
+
+.content {
+    max-width: 500px;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 51%;
+  margin-bottom: 1em;
+}
+
+.video-container > .youtube-player {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0; top: 0;
+}
+
+img {
+	max-width: 600px;
+}
+
+
+/****************************************
+ * SIDEBAR                              *
+ ****************************************/
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: #428bca;
+}
+
+.nav-sidebar > li > a,
+.nav-sidebar > h4 {
+    padding: 0 15px;
+    margin-bottom: 0px;
+}
+
+.nav-sidebar {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.nav hr {
+    margin: 0;
+    border-color: gray;
+    margin-bottom: 5px;
+}
+
+.sidebar {
+    background-color: lightgrey;
+    padding: 0 15px;
+}
+
+/****************************************
+ * CODE                                 *
+ ****************************************/
+code {
+	color: blue;
+}
+
+pre code {
+	white-space: pre;
+}
+
+pre {
+	background: black;
+	color: white;
+}
+
+div:not(.highlight) > pre {
+  display: table;
+  width: 100%;
+}
+
+div.highlight {
+  display: table;
+  width: 100%;
+}
+
+pre, code {
+  font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
+}
+
+div.highlight > pre {
+    background-color: inherit;
+    color: inherit;
+    margin-bottom: 0;
+}
+
+/****************************************
+ * BOXES                                *
+ ****************************************/
+
+.admonition {
+	border-style: solid;
+	border-width: 2px;
+	padding: 15px;
+	padding-bottom: 0;
+	margin-bottom: 21px;
+	border-radius: 4px;
+}
+
+.admonition > hr {
+	margin-top: 0px;
+	margin-bottom: 11px;
+}
+
+.heading {
+	font-weight: bold;
+	margin: 0px
+}
+
+div.note {
+	border-color: olive;
+}
+
+div.note > p.heading {
+	color: olive;
+}
+
+div.tip {
+	border-color: blue;
+}
+
+div.tip > p.heading {
+	color: blue;
+}
+
+div.required {
+	border-color: purple;
+}
+
+div.required > p.heading {
+	color: purple;
+}

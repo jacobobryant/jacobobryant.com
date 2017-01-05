@@ -1,0 +1,15 @@
+{{ partial "header.html" . }}
+{{ partial "navbar.html" . }}
+<div>
+	  <p>{{ .Title }}:</p>
+	  <ul>
+		{{ $baseurl := .Site.BaseURL }}
+		{{ range $name, $page := .Data.Pages }}
+		{{ if eq .Type "post" }}
+		<li><a href="{{ .Permalink }}">{{ $page.Title }}</a></li>
+		{{ end }}
+		{{ end }}
+	  </ul>
+	</div>
+</div>
+{{ partial "footer.html" . }}

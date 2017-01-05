@@ -1,0 +1,9 @@
+<div class="admonition required">
+	<p class="heading">READ FIRST</p>
+	<hr />
+	<ul>
+{{ range $path := .Params }}
+	<li><a href="/prog/{{ $path }}">{{ index (last 1 (split $path "/")) 0 | humanize }}</a></li>
+{{ end }}
+	</ul>
+</div>
