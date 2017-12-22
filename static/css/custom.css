@@ -1,6 +1,15 @@
 /****************************************
  * MISC                                 *
  ****************************************/
+ol li ol { 
+	list-style-type: lower-alpha;
+}
+
+ol li ol li ol {
+	list-style-type: lower-roman;
+}
+
+
 hr {
     border-color: black;
 }
@@ -10,7 +19,7 @@ body {
 }
 
 .content {
-    max-width: 500px;
+    max-width: 600px;
 }
 
 .video-container {
@@ -32,6 +41,9 @@ img {
 	max-width: 600px;
 }
 
+.nextpage {
+  float: right;
+}
 
 /****************************************
  * SIDEBAR                              *
@@ -89,6 +101,7 @@ div:not(.highlight) > pre {
 div.highlight {
   display: table;
   width: 100%;
+  margin-bottom: 10px;
 }
 
 pre, code {
@@ -121,7 +134,8 @@ div.highlight > pre {
 
 .heading {
 	font-weight: bold;
-	margin: 0px
+	margin: 0px;
+  text-transform: uppercase;
 }
 
 div.note {

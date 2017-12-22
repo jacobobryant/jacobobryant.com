@@ -32,11 +32,10 @@ then have companies send me free stuff in exchange. Short of that, I guess I
 can always resort to adding a "donate to my <del>World of Warcraft
 account</del> college fund" button. Either way, the current business model is
 simple: <ol> <li>Write interesting things</li> <li>???</li> <li>Profit!</li>
-</ol> Oh thank goodness, this post actually has a fair amount of text in it
-already. I hope it's interesting... I'm finding also that I like writing my
-ideas here a lot more than just writing them in my journal. It's comforting to
-have the possibility of someone reading the fruits of my labors, and that's not
-very likely with only a journal (except for the case of hooligans raiding my
-house).
+</ol> 
+I find that I like writing my ideas here a lot more than just writing
+them in my journal. It's comforting to have the possibility of someone
+reading the fruits of my labors, and that's not very likely with only
+a journal (except for the case of hooligans raiding my house).
 
 So here's to many thought-provoking blog posts in the years to come. Ho ho ho.

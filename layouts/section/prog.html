@@ -1,25 +1,69 @@
-<html>
-  <head>
-  <meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-	<link rel="stylesheet" href="{{ .Site.BaseURL }}bootstrap/css/bootstrap.min.css">
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
-
-  <link rel="stylesheet" href="{{ .Site.BaseURL }}css/custom.css">
-
-    <title>{{ .Site.BaseURL }}prog/</title>
-    <link rel="canonical" href="{{ .Site.BaseURL }}prog/"/>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <meta http-equiv="refresh" content="0; url={{ .Site.BaseURL }}prog/intro/why/"/>
-  </head>
-<body>
+{{ partial "header.html" . }}
 {{ partial "navbar.html" . }}
-</body>
-</html>
+
+{{ $title := .Title }}
+{{ $sections := (slice "overview" "introduction" "core" "intermediate" "advanced" "programs") }}
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-3 col-md-2 sidebar">
+			<ul class="nav nav-sidebar">
+
+				{{ range $sec := $sections }}
+					<h4>{{ $sec }}</h4>
+					<hr />
+					{{ range (index $.Site.Taxonomies.subsections $sec) }}
+							<li {{ if eq .Page.Title $title }}class="active"{{ end }}>
+							<a href="{{ .Page.RelPermalink }}">
+							{{ if isset .Page.Params "shorttitle" }}
+								{{ .Page.Params.shorttitle }}
+							{{ else }}
+								{{ .Page.Title }}
+							{{ end }}
+							</a></li>
+					{{ end }}
+				{{ end }}
+
+			</ul>
+		</div>
+
+		<div class="content col-sm-9 col-md-10">
+			<h2>{{ .Title }}</h2>
+			{{ .Content }}
+			<hr />
+
+			{{ $curTitle := .Title }}
+			{{ $.Scratch.Set "lastLink" "" }}
+			{{ $.Scratch.Set "lastTitle" "" }}
+
+			{{ range $sec := $sections }}
+			{{ range (index $.Site.Taxonomies.subsections $sec) }}
+
+				{{ if eq ($.Scratch.Get "lastTitle") $curTitle }}
+					{{ $.Scratch.Set "nextLink" .Page.RelPermalink }}
+					{{ $.Scratch.Set "nextTitle" .Page.Title }}
+				{{ end }}
+
+				{{ if eq .Page.Title $curTitle }}
+					{{ $.Scratch.Set "prevLink" ($.Scratch.Get "lastLink") }}
+					{{ $.Scratch.Set "prevTitle" ($.Scratch.Get "lastTitle") }}
+				{{ end }}
+
+				{{ $.Scratch.Set "lastLink" .Page.RelPermalink }}
+				{{ $.Scratch.Set "lastTitle" .Page.Title }}
+			{{ end }}
+			{{ end }}
+
+			{{ with $.Scratch.Get "prevLink" }}
+			<span>previous: <a href="{{ . }}">{{ $.Scratch.Get "prevTitle" }}</a></span>
+			{{ end }}
+
+			{{ with $.Scratch.Get "nextLink" }}
+			<span class='nextpage'>next: <a href="{{ . }}">{{ $.Scratch.Get "nextTitle" }}</a></span>
+			{{ end }}
+
+		</div>
+
+	</div>
+</div>
+{{ partial "footer.html" . }}

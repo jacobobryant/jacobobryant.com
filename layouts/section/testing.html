@@ -1,0 +1,19 @@
+{{ partial "header.html" . }}
+{{ partial "navbar.html" . }}
+<div class="container">
+	<div class="content">
+	{{ .Content }}
+
+
+	{{ if eq .Parent.Kind "home" }}
+		{{ range .Sections }}
+			<p><a href="{{ .Permalink }}">name: {{ .Params.name }}</a></p>
+		{{ end }}
+
+  {{ else }}
+		{{ partial "sidebar.html" . }}
+	{{ end }}
+
+	</div>
+</div>
+{{ partial "footer.html" . }}

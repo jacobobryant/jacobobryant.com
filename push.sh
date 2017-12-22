@@ -1,2 +1,3 @@
 #!/bin/bash
-hugo && rsync -av ./public/ doserver:chocoserve/nginx/static/
+./update_static.sh
+hugo && rsync -av --delete ./public/ jacobobryant.com:public/

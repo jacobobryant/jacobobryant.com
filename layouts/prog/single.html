@@ -2,7 +2,8 @@
 {{ partial "navbar.html" . }}
 
 {{ $title := .Title }}
-{{ $sections := (slice "introduction" "core" "intermediate" "programs") }}
+{{ $sections := (slice "overview" "introduction" "core" "intermediate" "advanced" "programs") }}
+
 <div class="container">
 	<div class="row">
 		<div class="col-sm-3 col-md-2 sidebar">
@@ -39,7 +40,8 @@
 			{{ range (index $.Site.Taxonomies.subsections $sec) }}
 
 				{{ if eq ($.Scratch.Get "lastTitle") $curTitle }}
-					<p>next: <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a></p>
+					{{ $.Scratch.Set "nextLink" .Page.RelPermalink }}
+					{{ $.Scratch.Set "nextTitle" .Page.Title }}
 				{{ end }}
 
 				{{ if eq .Page.Title $curTitle }}
@@ -53,7 +55,11 @@
 			{{ end }}
 
 			{{ with $.Scratch.Get "prevLink" }}
-			<p>previous: <a href="{{ . }}">{{ $.Scratch.Get "prevTitle" }}</a></p>
+			<span>previous: <a href="{{ . }}">{{ $.Scratch.Get "prevTitle" }}</a></span>
+			{{ end }}
+
+			{{ with $.Scratch.Get "nextLink" }}
+			<span class='nextpage'>next: <a href="{{ . }}">{{ $.Scratch.Get "nextTitle" }}</a></span>
 			{{ end }}
 
 		</div>

@@ -18,5 +18,21 @@
   <title>{{ .Title }}</title>
   <meta name="description" content="{{ .Title }}">
   <meta name="author" content="{{ .Site.Author.name }}">
+
+<script type="text/javascript">
+function show_windows() {
+    $(".windows").css("display", "block");
+    $(".linux").css("display", "none");
+		$("#winbutton").addClass("active");
+		$("#linbutton").removeClass("active");
+}
+function show_linux() {
+    $(".linux").css("display", "block");
+    $(".windows").css("display", "none");
+		$("#linbutton").addClass("active");
+		$("#winbutton").removeClass("active");
+}
+</script>
+
 </head>
 <body id="bootstrip-overrides">

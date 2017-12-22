@@ -5,7 +5,7 @@
 		</div>
 		<ul class="nav navbar-nav">
 		  {{ $url := .URL }}
-			{{ range $section := (slice "post" "prog" "privacy") }}
+			{{ range $section := (slice "post" "prog" "privacy" "about") }}
 				<li {{ if hasPrefix $url (printf "/%s" $section) }}class="active"{{ end }}>
 					<a href="{{ $.Site.BaseURL }}{{ $section | urlize }}">
 					{{ index $.Site.Data.titles $section }}</a></li>
@@ -13,7 +13,7 @@
 		</ul>
 
 		<ul class="nav navbar-nav navbar-right">
-		  <li><a href="mailto:obryant666@gmail.com">Contact me</a></li>
+		  <li><a href="mailto:foo@jacobobryant.com" title="foo@jacobobryant.com">Contact me</a></li>
 		</ul>
 	</div>
 </nav>

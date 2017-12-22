@@ -1,6 +1,6 @@
 languageCode = "en-us"
 title = "Jacob O'Bryant"
-baseurl = "http://jacobobryant.com/"
+baseurl = "https://jacobobryant.com/"
 newContentEditor = "vim"
 pygmentsCodeFences = true
 canonifyURLs = true

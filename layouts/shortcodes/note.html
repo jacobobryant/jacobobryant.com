@@ -1,5 +1,11 @@
 <div class="admonition note">
-	<p class="heading">NOTE</p>
+	<p class="heading">
+  {{ with .Get 0 }} 
+    {{ . }}
+  {{ else }}
+    NOTE
+  {{ end }}
+  </p>
 	<hr />
-	{{ .Get 0 | .Inner }}
+	{{ .Inner }}
 </div>

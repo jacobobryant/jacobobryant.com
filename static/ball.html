@@ -1,0 +1,117 @@
+<html>
+<head>
+<style>
+#canvas {
+  border-width: 1px;
+  border-style: solid;
+}
+
+#info {
+	position: fixed;
+	top: 30px;
+	left: 30px;
+}
+
+</style>
+</head>
+<body>
+<p id="info">Use the arrow keys to move the ball.</p>
+<canvas id="canvas" width="1000px" height="500px">
+</canvas>
+
+<script type="text/javascript">
+var GRAVITY = 0.25;
+var COR = 0.9;  // coefficient of restitution, i.e. how much velocity the ball retains after hitting a wall
+var THRUST = 0.4;
+var AIR_RESISTANCE = 0.995;
+
+var ball = {x: 100, y: 100, radius: 20, xvelocity: 0, yvelocity: 0};
+var canvas = document.getElementById("canvas");
+var keys = {left: false, right: false, up: false, down: false};
+
+function update() {
+  resize_canvas();
+  gravity();
+  thrust();
+  friction();
+  move();
+  collision();
+  draw();
+}
+
+function resize_canvas() {
+  canvas.width = window.innerWidth - 25;
+  canvas.height = window.innerHeight - 25;
+}
+
+function gravity() {
+  ball.yvelocity += GRAVITY;
+}
+
+function thrust() {
+  if (keys.left) {
+    ball.xvelocity -= THRUST;
+  }
+  if (keys.right) {
+    ball.xvelocity += THRUST;
+  }
+  if (keys.up) {
+    ball.yvelocity -= THRUST;
+  }
+  if (keys.down) {
+    ball.yvelocity += THRUST;
+  }
+}
+
+function friction() {
+  ball.xvelocity *= AIR_RESISTANCE;
+  ball.yvelocity *= AIR_RESISTANCE;
+}
+
+function move() {
+  ball.x += ball.xvelocity;
+  ball.y += ball.yvelocity;
+}
+
+function collision() {
+  if (ball.y + ball.radius > canvas.height) {
+    ball.y = canvas.height - ball.radius;
+    ball.yvelocity *= -COR;
+  } else if (ball.y - ball.radius < 0) {
+    ball.y = ball.radius;
+    ball.yvelocity *= -COR;
+  }
+  if (ball.x + ball.radius > canvas.width) {
+    ball.x = canvas.width - ball.radius;
+    ball.xvelocity *= -COR;
+  } else if (ball.x - ball.radius < 0) {
+    ball.x = ball.radius;
+    ball.xvelocity *= -COR;
+  }
+}
+
+function draw() {
+  var context = canvas.getContext("2d");
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  context.fillStyle = "black";
+  context.beginPath();
+  context.arc(ball.x, ball.y, ball.radius, 0, 2*Math.PI);
+  context.closePath();
+  context.fill();
+}
+
+function keyEvent(e, key_pressed) {
+  switch (e.keyCode) {
+    case 37: keys.left = key_pressed; break;
+    case 38: keys.up = key_pressed; break;
+    case 39: keys.right = key_pressed; break;
+    case 40: keys.down = key_pressed; break;
+  }
+}
+
+window.addEventListener("keydown", event => keyEvent(event, true), false);
+window.addEventListener("keyup", event => keyEvent(event, false), false);
+setInterval(update, 15);
+</script>
+</body>
+</html>

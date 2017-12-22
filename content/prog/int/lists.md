@@ -1,4 +1,0 @@
-+++
-title = "lists"
-subsections = ["intermediate"]
-+++
