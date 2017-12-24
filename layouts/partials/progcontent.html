@@ -1,0 +1,79 @@
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+<div class="row">
+	<div class="col-sm-3 col-md-2 sidebar nav-side-menu">
+
+	<div class="brand">{{ .root.Params.name }}</div>
+  
+		<div class="menu-list">
+  
+			<ul id="menu-content" class="menu-content out">
+
+				{{ $scratch := .cur.Scratch }}
+				{{ $curTitle := .cur.Params.name }}
+				{{ $scratch.Set "lastLink" .root.RelPermalink }}
+				{{ $scratch.Set "lastTitle" .root.Params.name }}
+
+				<li class="{{ if eq .cur .root }}active{{ end }}"><a href="{{ .root.RelPermalink }}">overview</a></li>
+
+				{{ range .root.Sections }}
+				{{ if isset .Params "name" }}
+
+					<li data-toggle="collapse" data-target="#{{ .UniqueID }}" class="collapsed 
+					{{ if .IsAncestor $.cur }}active{{ end }}">
+						<a href="#">{{ .Params.name }}<span class="arrow"></span></a>
+					</li>
+
+					<ul class="sub-menu collapse
+					{{ if .IsAncestor $.cur }}in{{ end }}" id="{{ .UniqueID }}">
+					{{ range .Pages }}
+						<li {{ if eq .UniqueID $.cur.UniqueID }}class="active"{{ end }} >
+							<a href="{{ .RelPermalink }}">
+								{{ if isset .Params "shorttitle" }}
+									{{ .Params.shorttitle }}
+								{{ else }}
+									{{ if isset .Params "name" }}
+										{{ .Params.name }}
+									{{ else }}
+										no name set
+									{{ end }}
+								{{ end }}
+						</a></li>
+
+						{{ if eq ($scratch.Get "lastTitle") $curTitle }}
+							{{ $scratch.Set "nextLink" .RelPermalink }}
+							{{ $scratch.Set "nextTitle" .Params.name }}
+						{{ end }}
+
+						{{ if eq .Params.name $curTitle }}
+							{{ $scratch.Set "prevLink" ($scratch.Get "lastLink") }}
+							{{ $scratch.Set "prevTitle" ($scratch.Get "lastTitle") }}
+						{{ end }}
+
+						{{ $scratch.Set "lastLink" .RelPermalink }}
+						{{ $scratch.Set "lastTitle" .Params.name }}
+
+
+					{{ end }}
+					</ul>
+				{{ end }}
+				{{ end }}
+			</ul>
+		</div>
+	</div>
+
+	<div class="content col-sm-9 col-md-10">
+		<h2>{{ .cur.Params.name }}</h2>
+		{{ .cur.Content }}
+		<hr />
+
+		{{ with $scratch.Get "prevLink" }}
+		<span>previous: <a href="{{ . }}">{{ $scratch.Get "prevTitle" }}</a></span>
+		{{ end }}
+
+		{{ with $scratch.Get "nextLink" }}
+		<span class='nextpage'>next: <a href="{{ . }}">{{ $scratch.Get "nextTitle" }}</a></span>
+		{{ end }}
+
+	</div>
+</div>

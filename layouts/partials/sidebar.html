@@ -1,7 +1,0 @@
-<p>{{ .File.Path }} </p>
-{{ range .Sections }}
-	<p>hey: {{ .Params.name }}</p>
-	{{ range .Pages }}
-			<p>{{ .Params.name }}: {{ .File.Path }}</p>
-	{{ end }}
-{{ end }}

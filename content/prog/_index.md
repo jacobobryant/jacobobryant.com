@@ -1,9 +1,5 @@
 +++
-title = "Programming (noun)"
-shorttitle = "learn programming"
-date = "2017-10-28"
-subsections = [ "overview" ]
-subsections_weight = 4
+name = "Programming (noun)"
 +++
 
 Definition: the chemical process by which pizza is converted to
@@ -12,21 +8,36 @@ software.
 Many people would like to learn programming but don't know where to
 start. Some people find a starting point (e.g. an introductory
 computer science course in college) but have trouble learning the
-material. My goal is to help solve both problems.
+material. My goal is to solve both problems. This website is meant to
+be everything you need to become familiar with the
+field of programming and get on track to becoming a skilled coder,
+even if you're a complete beginner.
 
-The next page has a roadmap which describes different areas of
-software development that you can learn about. You can think of the
-different areas like courses that you might take in a college computer
-science program. For each course, I will provide advice and links to
-resources (e.g. online tutorials) that will help you learn it. As time
-permits, I'll add my own tutorials to this website.
+I've provided a roadmap below which describes different areas of
+software development. You can think of the
+different areas like courses you might take in a college computer
+science program. For each course, I will provide:
 
-By learning the material described in the roadmap, you will gradually
-reach the point where you don't need guidance from people like me
-anymore; you'll be able to progress by coming up with questions and
-doing the research to answer them on your own. This is how experienced
-coders learn.
+ - a short description of the material
+ - examples of software you will be able to create after learning the
+   material
+ - resources you can use to learn the material (e.g. links to online
+   tutorials)
+ - guidance on how to use the resources effectively
 
+As time permits, I'll also add my own tutorials to this website.
+
+If you already have ideas about what you want to learn, the roadmap
+will show you how to get there. If you're just generally interested in
+programming, the roadmap can show you where to start and give you some
+ideas about what to try out next.
+
+With time, you will reach the point where you don't need guidance from
+people like me anymore; you'll be able to progress by coming up with
+questions and doing the research to answer them on your own. This is
+how experienced coders learn.
+
+<!--
 But let's take a step back. Why would you want to learn programming in
 the first place? Here are a few possible reasons:
 
@@ -51,5 +62,12 @@ the first place? Here are a few possible reasons:
 In short, programming has something to offer for everyone. I can't
 think of anyone who wouldn't benefit from exposure to programming,
 even if they decide not to pursue it.
+-->
 
-Now it's time to see [the roadmap](roadmap).
+### Roadmap
+(Click to enlarge)
+
+<a target="_blank" href="roadmap.svg"><img src="roadmap.svg" /></a>
+
+### Course descriptions
+Warning: not done yet lah
