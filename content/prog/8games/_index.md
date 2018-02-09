@@ -1,5 +1,6 @@
 +++
 name = "games"
+draft = true
 +++
 Prerequisites: Intro to Programming
 

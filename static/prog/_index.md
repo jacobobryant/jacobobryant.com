@@ -70,4 +70,5 @@ even if they decide not to pursue it.
 <a target="_blank" href="roadmap.svg"><img src="roadmap.svg" /></a>
 
 ### Course descriptions
-Warning: not done yet lah
+(I've only written one course description so far. The rest will come
+soon.)

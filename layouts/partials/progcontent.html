@@ -11,8 +11,10 @@
 
 				{{ $scratch := .cur.Scratch }}
 				{{ $curTitle := .cur.Params.name }}
+				{{ $curId := .cur.UniqueID }}
 				{{ $scratch.Set "lastLink" .root.RelPermalink }}
 				{{ $scratch.Set "lastTitle" .root.Params.name }}
+				{{ $scratch.Set "lastId" .root.UniqueID }}
 
 				<li class="{{ if eq .cur .root }}active{{ end }}"><a href="{{ .root.RelPermalink }}">overview</a></li>
 
@@ -40,19 +42,19 @@
 								{{ end }}
 						</a></li>
 
-						{{ if eq ($scratch.Get "lastTitle") $curTitle }}
+						{{ if eq ($scratch.Get "lastId") $curId }}
 							{{ $scratch.Set "nextLink" .RelPermalink }}
 							{{ $scratch.Set "nextTitle" .Params.name }}
 						{{ end }}
 
-						{{ if eq .Params.name $curTitle }}
+						{{ if eq .UniqueID $curId }}
 							{{ $scratch.Set "prevLink" ($scratch.Get "lastLink") }}
 							{{ $scratch.Set "prevTitle" ($scratch.Get "lastTitle") }}
 						{{ end }}
 
 						{{ $scratch.Set "lastLink" .RelPermalink }}
 						{{ $scratch.Set "lastTitle" .Params.name }}
-
+						{{ $scratch.Set "lastId" .UniqueID }}
 
 					{{ end }}
 					</ul>
